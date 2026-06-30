@@ -1,0 +1,229 @@
+C language : C is a most powerfull programing language. 
+
+    which is developed by Denis M. Ritchie in 1972 at AT & T bell lab. 
+
+    Before C program there was B programing Language 
+
+    and before B program there is BCPL (Basic Computed programing language)
+
+    ANSI standarized C programing in 1989 
+
+    ANSI : American National standard institute 
+
+    and rename it as ANSI C and C89 
+
+-----------------------------------------
+Hi, how are you X
+
+A , B .. 
+
+-----------------------------------------
+#   : pre defined 
+
+include : to add something 
+
+<filename> : file name 
+
+<stdio.h> : standard input output header file 
+
+void main() {  : opening block 
+
+}  : closing block 
+
+printf() : printf is an inbuilt function which is used to 
+    display appropriate message on console screen. 
+
+structure of c programing :
+--------------------------------
+#include<stdio.h>
+void main()
+{
+
+}
+---------------------------------
+escape sequence 
+
+\n  : new line 
+
+----------------------------------------------
+Datatype : which type of value we store in a variable its called 
+        datatype. 
+
+                                values 
+                                |
+                                V 
+
+----------------------------------------------------------------------
+|                               |                                   |
+V                               V                                   V 
+numbers                      characters                           true / false 
+    |
+    V 
+
+point       without 
+            point 
+
+
+point :  book price : 159.59 
+         height : 5.2
+         
+         float       %f 
+         double       %lf 
+         long double   %Lf 
+
+without point : age  25
+                score  80
+
+        int   (integer)  d   % 
+
+
+datatypes :   int  
+              float 
+              double 
+              long double 
+
+-----------------------------------------------------------------
+variable : A name which can store a value. 
+
+    e.g. bottle = water     
+
+            here, water is my value and bottle is a variable name 
+
+        lvalue = rvalue 
+
+        lvalue means variablename and rvalue means value 
+
+    use of variable in program. 
+
+    step 1 : variable declaration 
+
+        syntax : datatypename  variablename; 
+
+        e.g.    int  score; 
+
+    step 2 : variable defination or variable initlization 
+
+        syntax : variablename = value;
+
+    step 3 : use of variable 
+
+        syntax :    printf("%placeholder",variablename)
+
+        e.g.  : printf("%d",score);
+
+
+
+------------------------------------------------------
+keywords : keywords are reserved predefined words   
+    which have predefined meaning in programing 
+
+    there are 32 keywords are there which written in small letters 
+
+C language is a case sensitive programing language 
+
+ASCII : American standard code for information interchange 
+
+e.g. 
+    ASCII value 
+A  : 65
+
+a  : 97
+
+variable rules : 
+
+1) we can't use predefined keyword as a variable name 
+
+    e.g.  int  int X 
+          int float X 
+
+          int  INT correct 
+        
+2) we can't add whitespace in variable name 
+
+        e.g. int subject score   X 
+
+3) variable name can contain only A to Z , a to z , 0 to 9 digits and _ (underscore) only.
+
+        e.g. int subject_score; 
+
+4) we can't start variable name with digits 
+
+        e.g.  int  01num   X 
+              
+              int  num1;  correct 
+--------------------------------------------
+for character datatype ::: 
+
+syntax : char  <variablename>;
+
+it can accept only single character
+
+i want to accept multiple characters from user so, at that time we call it string 
+insted of character. 
+
+
+for string value 
+
+syntax : char <variablename>[size];
+
+----------------------------------------------------
+operator : if we want to perform any operations 
+    at that time we have to use specific 
+    symbols its called operator. 
+
+    e.g.  a + b 
+
+    here a and b are operands , and + is an operator 
+
+1) Airthmetic operator 
+
+        +  -  * /  % (module)
+
+2) Assignment operator : 
+         = 
+
+         a = 10  here 10 assign to a 
+         shorthand operator 
+         combination of airthmetic and assignment operator
+
+        +=  , -= , *= , /= ,%= 
+
+3) relational operator : 
+
+        >  <  >=  <=  == != 
+
+4) logical operator : 
+
+        && 
+        ||
+        !
+
+5) incremenet decrement operator 
+    or utility operator 
+
+    ++   -- 
+
+6) Bitwise operator : 
+
+    which is perform on individual bits 
+
+    << left shift 
+    >> right shift ... 
+
+7) conditional operator :   
+    which contain 3 expression 
+    thats why we can call ternary operator 
+
+8) sizeof operator : 
+
+    to find out variable size 
+
+    syntax : sizeof(variablename);
+
+9) special operator : 
+
+    (,) comma operator  
+    (&) address operator 
+    (*) value at operator 
+    
+    
