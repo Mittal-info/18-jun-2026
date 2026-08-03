@@ -1,0 +1,484 @@
+C language : C is a most powerfull programing language. 
+
+    which is developed by Denis M. Ritchie in 1972 at AT & T bell lab. 
+
+    Before C program there was B programing Language 
+
+    and before B program there is BCPL (Basic Computed programing language)
+
+    ANSI standarized C programing in 1989 
+
+    ANSI : American National standard institute 
+
+    and rename it as ANSI C and C89 
+
+-----------------------------------------
+Hi, how are you X
+
+A , B .. 
+
+-----------------------------------------
+#   : pre defined 
+
+include : to add something 
+
+<filename> : file name 
+
+<stdio.h> : standard input output header file 
+
+void main() {  : opening block 
+
+}  : closing block 
+
+printf() : printf is an inbuilt function which is used to 
+    display appropriate message on console screen. 
+
+structure of c programing :
+--------------------------------
+#include<stdio.h>
+void main()
+{
+
+}
+---------------------------------
+escape sequence 
+
+\n  : new line 
+
+----------------------------------------------
+Datatype : which type of value we store in a variable its called 
+        datatype. 
+
+                                values 
+                                |
+                                V 
+
+----------------------------------------------------------------------
+|                               |                                   |
+V                               V                                   V 
+numbers                      characters                           true / false 
+    |
+    V 
+
+point       without 
+            point 
+
+
+point :  book price : 159.59 
+         height : 5.2
+         
+         float       %f 
+         double       %lf 
+         long double   %Lf 
+
+without point : age  25
+                score  80
+
+        int   (integer)  d   % 
+
+
+datatypes :   int  
+              float 
+              double 
+              long double 
+
+-----------------------------------------------------------------
+variable : A name which can store a value. 
+
+    e.g. bottle = water     
+
+            here, water is my value and bottle is a variable name 
+
+        lvalue = rvalue 
+
+        lvalue means variablename and rvalue means value 
+
+    use of variable in program. 
+
+    step 1 : variable declaration 
+
+        syntax : datatypename  variablename; 
+
+        e.g.    int  score; 
+
+    step 2 : variable defination or variable initlization 
+
+        syntax : variablename = value;
+
+    step 3 : use of variable 
+
+        syntax :    printf("%placeholder",variablename)
+
+        e.g.  : printf("%d",score);
+
+
+
+------------------------------------------------------
+keywords : keywords are reserved predefined words   
+    which have predefined meaning in programing 
+
+    there are 32 keywords are there which written in small letters 
+
+C language is a case sensitive programing language 
+
+ASCII : American standard code for information interchange 
+
+e.g. 
+    ASCII value 
+A  : 65
+
+a  : 97
+
+variable rules : 
+
+1) we can't use predefined keyword as a variable name 
+
+    e.g.  int  int X 
+          int float X 
+
+          int  INT correct 
+        
+2) we can't add whitespace in variable name 
+
+        e.g. int subject score   X 
+
+3) variable name can contain only A to Z , a to z , 0 to 9 digits and _ (underscore) only.
+
+        e.g. int subject_score; 
+
+4) we can't start variable name with digits 
+
+        e.g.  int  01num   X 
+              
+              int  num1;  correct 
+--------------------------------------------
+for character datatype ::: 
+
+syntax : char  <variablename>;
+
+it can accept only single character
+
+i want to accept multiple characters from user so, at that time we call it string 
+insted of character. 
+
+
+for string value 
+
+syntax : char <variablename>[size];
+
+----------------------------------------------------
+operator : if we want to perform any operations 
+    at that time we have to use specific 
+    symbols its called operator. 
+
+    e.g.  a + b 
+
+    here a and b are operands , and + is an operator 
+
+1) Airthmetic operator 
+
+        +  -  * /  % (module)
+
+2) Assignment operator : 
+         = 
+
+         a = 10  here 10 assign to a 
+         shorthand operator 
+         combination of airthmetic and assignment operator
+
+        +=  , -= , *= , /= ,%= 
+
+3) relational operator : 
+
+        >  <  >=  <=  == != 
+
+4) logical operator : 
+
+        && 
+        ||
+        !
+
+5) incremenet decrement operator 
+    or utility operator 
+
+    ++   -- 
+
+6) Bitwise operator : 
+
+    which is perform on individual bits 
+
+    << left shift 
+    >> right shift ... 
+
+7) conditional operator :   
+    which contain 3 expression 
+    thats why we can call ternary operator 
+
+8) sizeof operator : 
+
+    to find out variable size 
+
+    syntax : sizeof(variablename);
+
+9) special operator : 
+
+    (,) comma operator  
+    (&) address operator 
+    (*) value at operator 
+    
+-------------------------------------------
+int : 2byte or 4byte 
+
+float : 4byte
+
+double : 8byte 
+
+long double : 10byte 
+
+char : 1 byte 
+
+char [size] : size byte 
+-------------------------------------------
+control statements : 
+
+    1) conditional statements 
+    2) looping statements
+    3) jumping statements
+
+1) conditional statements: 
+
+    i) if statements
+    ii) if..else statements
+    iii) elif statement 
+    iv) nested if statement
+    v) switch statement
+
+-----------------------------------
+i) if statement : 
+
+    if condition goes true it will execute true statement
+
+    syntax : 
+
+    if (condition)
+    {
+        // true statement;
+    }
+-----------------------------------
+ ii) if..else statements:
+
+ ----------------------------------
+ iii) elif statement:
+
+    when we want to check  multiple conditions at that time we have to use else ..if statement
+
+        syntax:
+          if(condition)
+          {
+            statement;
+          }
+          else if(condition)
+          {
+            statement;33
+          }
+          else if(condition)
+          {
+            statement;
+          }
+          else
+          {
+            statement;
+          } 
+
+------------------------------------------
+ iv) nested if statement:
+
+   when if condition call inside the another if condition.
+
+   if(condition)
+   {
+
+    if(condition)
+    {
+        statement
+    }
+    else
+    {
+        statement
+    }
+
+   }
+   else
+   {
+      statement
+   }
+
+   --------------------------------------------------------
+     v) switch statement:when we want to perform multiple condition
+
+         note:switch statement does not  support float data type
+         
+         syntax: 
+         switch(expression)
+         {
+            case value:
+            statement;
+            break;
+
+            case value:
+            statement;
+            break;
+
+            case value:
+            statement;
+            break;
+
+            default:
+            statement;
+         }
+
+   ---------------------------------------------
+
+   looping statement:
+
+      when we want to display specific statement multiple times we can use loop statement.
+
+      in c programing there are three types of loop
+
+      1)For loop
+      2)while...loop
+      3)do...while loop
+      ----------------------------------------------
+
+         1)For loop: for loop is a sequence control loop.
+
+         syntax:
+
+           for(counter1;counter2;counter3)
+           {
+            statement;
+           } 
+
+           for(initlization;condition;updation)
+           {
+            statement;
+           }   
+        ----------------------------------------------
+
+
+        2)while...loop:
+    
+          while loop is an entry controlled loop
+
+           syntax:
+           initialization;
+           while(condition)
+           {
+            //block of code;
+            updation;
+           }
+       ----------------------------------------------
+     3) jumping statements:
+
+         There are  three types of jumping statements
+      1)break
+                  
+                   syntax:
+                     break;                   
+
+      2)continue: skip the current statement and loop will continue
+ 
+                     syntax:
+                        continue;
+                    
+      3)go to: goto is a jumping statement which means jump to specific part of program.
+
+                       syntax:
+                           goto <label>;
+                            label:block of code
+    -----------------------------------------------------
+    Function :   function is a block of code the code are used to again and again.
+                     there are 3 steps to create function.
+          
+            step 1: function declaration:
+                   syntax:
+                       <datatype> funname();
+                            
+            step 2:function definition:
+                    syntax:
+
+                           <datatype> funname();
+                          {
+                             
+                             //block of code
+
+                          }
+
+            step 3:function calling:Use
+                    syntax:
+
+                         funname();
+     ---------------------------------------------
+     types of functions:
+
+       there are mainly two types of function
+       1)built-in function
+       2)userdefined function
+
+    -----------------------------------------------                  
+       1)built-in function:which is predefined by c programing.
+
+       2)userdefined function:function which is defined by user for own purpose.
+
+---------------------------------------------------
+ categories of function
+
+ there are mainly categories of function
+
+ 1)function without return type and function without parameter
+ 2)function with parameter and function without return type
+ 3)function with parameter and functionwith return type
+ 4)function without parameter and function with return type       
+    recoursion
+
+---------------------------------------------
+ local variable:which is declare inside the function.
+         which is only access by function.
+
+ Global variable:  which is declare outside the function.
+         anyone can use it.      
+
+---------------------------------------------
+Array:Array is a derived data type 
+    which can store multiple values at single location.
+
+    arr = {12,23,35};
+-----------------------------------------
+ Array can store similar data element at same location.
+
+ structure:structure is an userdefined data type 
+   which is contain similar and dis-similar data elements.
+
+   structure declare by struct keyword.
+--------------------------------------------------------
+Pointer: Pointer is a special variable which can contain address of another variable.
+     syntax:
+        <datatype> variablename;
+        * variable  at operator.
+        & value at operator.
+------------------------------------------------
+file handling:
+    file handling means progamatically create,read and write files.
+
+    fp::file Pointer
+
+    FILE:FILE is a data type
+
+    There are different modes are there 
+
+     W:write mode
+     r:read mode
+     a:append mode
+
+         
+       
