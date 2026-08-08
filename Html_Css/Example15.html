@@ -1,0 +1,84 @@
+<html>
+    <head>
+        <title></title>
+        <style>
+        table {
+            border-collapse: collapse;
+            width: 50%;
+        }
+        h2 {
+            
+            width: 50%;
+            text-align: center;
+            background-color:blueviolet;
+            color: white;
+        }
+        tr,td {
+           
+            padding: 2px;
+            margin-left: 12px;
+        }
+    </style>
+    </head>
+    <body>
+
+    <h2>Registration Form</h2>
+   <form method="post">
+    <table>
+
+         <tr>
+            <td>First Name:</td>
+            <td><input type="text" name="firstname" placeholder="Enter your first name" id="firstname"></td>
+        </tr>
+         <tr>
+            <td>Last Name:</td>
+            <td><input type="text" name="lastname" placeholder="Enter your last name" id="lastname"></td>
+        </tr>
+
+        <tr>
+            <td>Email:</td>
+            <td><input type="email" name="email" placeholder="Enter your email" id="email"></td>
+        </tr>
+        <tr>
+            <td>Password:</td>
+            <td><input type="password" name="password" placeholder="Enter your password" id="password"></td>    
+            </tr>
+            <tr>
+                <td>contact</td>
+                <td><input type="text" name="contact" placeholder="Enter your contact number" id="contact"></td>
+            </tr>
+            <tr>
+                <td>Gender:</td>
+                <td>
+                    <input type="radio" name="gender" value="Male">Male 
+                    <input type="radio" name="gender" value="Female">Female 
+            </tr>
+            <tr>
+                <td>Country:</td>
+                <td>
+                    <select name="country">
+                        <option disabled selected>Select your country</option>
+                        <option value="India">India</option>
+                        <option value="USA">USA</option>
+                        <option value="UK">UK</option>
+                        <option value="Canada">Canada</option>
+                    </select>
+                </td>
+                </tr>
+                <tr>
+                    <td>choose subject:</td>
+                    <td>
+                        <input type="checkbox" name="subjects" value="Maths">Maths
+                        <input type="checkbox" name="subjects" value="Science">Science
+                        <input type="checkbox" name="subjects" value="English">English
+                    </td>
+                </tr>
+            <tr>
+            
+                <td><input type="submit" value="Register"></td>
+            </tr>
+    </table>
+
+        </form>
+    </body>
+</html>
