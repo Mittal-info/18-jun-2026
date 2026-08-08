@@ -1,0 +1,166 @@
+html : hyper text markup language
+
+   whenever we want to design webpages we must have to use html.
+
+  -----------------------------------------------------------
+  html is a collection of tags
+
+      there are two types of tags:
+
+      1)singular tags
+      2)paired tags
+
+         there are only three tags are singular:
+
+           <img>
+           <hr>
+           <br>
+
+          paired tags: <html>....</html>
+
+=============================================================
+
+structure of html:
+
+<html>
+  <head>
+
+     </head>
+
+     <body>
+
+        </body>
+
+ </html>       
+       
+=======================================================
+
+Formatting tags:
+
+ <h1></h1>
+ <h2></h2>
+ <h3></h3>
+ <h4></h4>
+ <h5></h5>
+ <h6></h6>
+
+ ================================================
+
+ paragraph tag:
+
+   <p> this is..... </p>
+
+ ===================================================
+ Formatting tags:
+   <b>bold</b>
+   <i>Italic</i>
+   <u>underline</u>
+   <mark>price value</mark> 
+   <sub></sub>
+   <sup> </sup>
+=====================================================
+ list elements:
+   
+   there are three types of list in html:
+
+     1)Unorder list
+     2)order list
+     3)Description list
+
+         1)Unorder list:
+             
+             <ul>:Unorder
+             <li>:list item
+
+          2)order list
+
+               <ol>:order
+               <li>:list item 
+
+          3)Description list
+
+              <dl>:Description list
+              <dt>:Description tag
+              <dd>:Description data
+
+ ======================================================
+ Website is a collection of webpages.
+=========================================================
+
+<table>: to represent table tag
+
+<thead>:table heading
+
+<tbody>:table body
+
+<tr>:table row
+
+<th>:table header for row
+
+<td>:table data
+
+=========================================================
+
+CSS: cascading style sheet
+
+   which is use to design webpage
+
+   there are three ways to apply style on webpages.
+
+   1)Inline CSS
+   2)Internal CSS
+   3)External CSS
+------------------------------------------------------- 
+1)Inline CSS: we can provide css in specific element
+
+    syntax:
+       <element style="property:value">
+
+2)Internal CSS:
+
+   syntax:
+
+   <style>
+   h1{
+      property:value;
+   }
+   </style>
+                        
+3)External CSS:
+
+----------------------------------------------------------
+Selectors:
+
+1)element Selectors:
+    h1,h2,h3,p etc...
+
+2)class Selector:
+  
+  .classname
+  {
+
+  }
+
+3)id Selecto:
+
+ #id{
+
+
+ }
+
+4)grouping Selectors:
+
+    element1,element2
+    {
+
+
+    }
+    
+5)universal Selector:
+
+ *{
+     property:value;
+ }
+ ---------------------------------------------------------------- 
+ 
+   
