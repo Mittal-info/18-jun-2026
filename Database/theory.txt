@@ -1,1 +1,1658 @@
+Database:
+          Database is a collection of records in tabular format.
 
+          there are mainly two types of records
+
+          1)DBMS: Database management system
+
+          2)RDBMS:Relational Database management system
+
+------------------------------------------------------------
+
+   What is table?
+
+        Table is a one kind place in Database which is contain records
+        in simple language we can say that table is a combination of
+        row and column.
+
+   row: which is represent specific single record
+
+   column: which is represent field of table
+
+   --------------------------------
+        Id  | Name | Email 
+   --------------------------------
+         1  | AAAA | a@gamil.com (r1)
+         2  | BBBB | b@gamil.com (r2)  
+
+   column: id,Name,Email
+
+   -----------------------------------------------------
+
+   sql : structure query language.
+
+     using sql we can add, remove, update, filter records from the table
+------------------------------------------------------------------------
+ Types of sql:
+
+     1) DDL: Data defination language
+
+        using DDL command we can add Database , remove, modify and 
+        many more with table.
+
+        using of DDL command we can modify structure of table.
+        and can create or remove Database.    
+
+      syntax:
+
+       #create database <databasename>;
+
+       e.g.
+          #create database 18_juneDb;
+----------------------------------------------------------   
+check version:
+
+  mysql --version
+----------------------------------------------
+SqlLogin:
+
+       Open cmd
+          |
+          v
+     Login your account
+          |
+          v      
+     #mysql -u root -p
+     Enter password:123456789  
+----------------------------------------------
+ show all database:
+          #---For command
+          show databases;    
+ ----------------------------------------------   
+ ==> create database 18junedb;
+Query OK, 1 row affected (0.08 sec)
+
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| 18junedb           |
+| information_schema |
+| mysql              |
+| performance_schema |
+| sys                |
++--------------------+  
+------------------------------------------------------  
+for create table in database..
+
+#use <database>;
+
+mysql> use 18junedb;
+Database changed
+-----------------------------------------------------
+Table creation:
+
+   syntax:
+      
+       create table <tablename>;
+       (
+
+          fieldname datatype,
+          fieldname datatype,
+          fieldname datatype,
+          fieldname datatype
+       );
+ 
+     Example: 
+
+        mysql> create table student
+    -> (
+    -> id int,
+    -> name varchar(20)
+    -> );
+Query OK, 0 rows affected (0.14 sec)
+
+mysql> desc student;
++-------+-------------+------+-----+---------+-------+
+| Field | Type        | Null | Key | Default | Extra |
++-------+-------------+------+-----+---------+-------+
+| id    | int         | YES  |     | NULL    |       |
+| name  | varchar(20) | YES  |     | NULL    |       |
++-------+-------------+------+-----+---------+-------+
+
+desc---->Describe for show table.
+-----------------------------------------------------------
+ DDL: command:
+
+    1)CREATE
+    2)ALTER
+    3)TRUNCATE
+    4)DROP
+------------------------------------------------------  
+    4)DROP:
+        
+          To remove table from database and to remove database.
+
+      syntax:
+---------------------------------------------------------------
+      #drop table <tablename>;
+---------------------------------------------------------------      
+
+mysql> drop table student;
+Query OK, 0 rows affected (0.08 sec)
+
+mysql> desc student;
+ERROR 1146 (42S02): Table '18junedb.student' doesn't exist
+---------------------------------------------------------------
+      #drop database <databasename>;
+----------------------------------------------------------------
+mysql> drop database 18junedb;
+Query OK, 0 rows affected (0.03 sec)
+
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| mysql              |
+| performance_schema |
+| sys                |
++--------------------+
+4 rows in set (0.00 sec)
+-----------------------------------------------------------------
+
+ 2) ALTER : alter command mainly use to restructure of table.
+
+ using of alter command we can modify column name, 
+ datatype, we can add new column we can drop existing
+ column using of alter command.
+
+  C:\Users\pramukh>mysql -u root -p
+Enter password: **
+
+
+---------------------------------------------------------------
+for Add column:
+---------------------------------------------------------------
+
+mysql> alter table student add email varchar(20);
+Query OK, 0 rows affected (0.11 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc student;
++-------+-------------+------+-----+---------+-------+
+| Field | Type        | Null | Key | Default | Extra |
++-------+-------------+------+-----+---------+-------+
+| id    | int         | YES  |     | NULL    |       |
+| name  | varchar(20) | YES  |     | NULL    |       |
+| email | varchar(20) | YES  |     | NULL    |       |
++-------+-------------+------+-----+---------+-------+
+3 rows in set (0.00 sec)
+----------------------------------------------------------
+For Remove column:
+----------------------------------------------------------
+
+mysql> alter table student drop email;
+Query OK, 0 rows affected (0.07 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+---------------------------------------------------------------------------
+mysql> alter table student add email varchar(20) first;
+---------------------------------------------------------------------------
+Query OK, 0 rows affected (0.09 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc student;
++-------+-------------+------+-----+---------+-------+
+| Field | Type        | Null | Key | Default | Extra |
++-------+-------------+------+-----+---------+-------+
+| email | varchar(20) | YES  |     | NULL    |       |
+| id    | int         | YES  |     | NULL    |       |
+| name  | varchar(20) | YES  |     | NULL    |       |
++-------+-------------+------+-----+---------+-------+
+3 rows in set (0.00 sec)
+-----------------------------------------------------------------------------
+mysql> alter table student add email varchar(20) after id;
+-----------------------------------------------------------------------------
+ERROR 1060 (42S21): Duplicate column name 'email'
+mysql> desc student;
++-------+-------------+------+-----+---------+-------+
+| Field | Type        | Null | Key | Default | Extra |
++-------+-------------+------+-----+---------+-------+
+| email | varchar(20) | YES  |     | NULL    |       |
+| id    | int         | YES  |     | NULL    |       |
+| name  | varchar(20) | YES  |     | NULL    |       |
++-------+-------------+------+-----+---------+-------+
+3 rows in set (0.00 sec)
+------------------------------------------------------------------------------------
+
+Change datatype value:
+
+mysql> alter table student modify email varchar(40);
+Query OK, 0 rows affected (0.02 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc student;
++-------+-------------+------+-----+---------+-------+
+| Field | Type        | Null | Key | Default | Extra |
++-------+-------------+------+-----+---------+-------+
+| email | varchar(40) | YES  |     | NULL    |       |
+| id    | int         | YES  |     | NULL    |       |
+| name  | varchar(20) | YES  |     | NULL    |       |
++-------+-------------+------+-----+---------+-------+
+3 rows in set (0.00 sec)
+
+---------------------------------------------------------------------------------------
+
+3)TRUNCATE :
+  
+         TRUNCATE command which mainly use to remove all rows from the table.
+
+         in a simple language we can say that TRUNCATE command remove all data from the table.
+
+         difference between drop and TRUNCATE:
+
+         DROP: completly remove table from the database.
+
+         after executation of drop command we can't find out table in memory.
+
+         TRUNCATE: using of TRUNCATE we can just deleting all records from the table
+                   not destroying table from the database.
+
+
+         DROP: remove data,remove structure,remove table
+
+         TRUNCATE:remove data,remove structure as it is and table as it is          
+
+         
+       syntax:
+             TRUNCATE table <tablename>;
+
+             e.g.
+
+               id       name     subject
+               1        Anjali   Python
+               2        Mittal   Java
+
+             by Default increment by 1 when executation TRUNCATE command it reset 
+             counter from 1.
+
+   ==============================================================================
+
+   2)DML: DML stands for Data modification language.
+
+       using of dml command we can add,remove and update records in table.
+
+       1)INSERT
+       2)UPDATE
+       3)DELETE
+
+
+      1)INSERT :  Whenever we want to store new record in existing table we have to execute
+                  insert command.
+
+                  using of insert we can insert one or more records at a time.
+
+                  there are various  way to execute insert command.
+
+                  1)Traditional way:
+
+                    INSERT INTO <tablename>
+                      (column1,column2,........)
+                      values(.......);            
+
+
+mysql> show tables;
++------------------+
+| Tables_in_18june |
++------------------+
+| student          |
++------------------+
+1 row in set (0.07 sec)
+
+mysql> desc student;
++-------+-------------+------+-----+---------+-------+
+| Field | Type        | Null | Key | Default | Extra |
++-------+-------------+------+-----+---------+-------+
+| email | varchar(40) | YES  |     | NULL    |       |
+| id    | int         | YES  |     | NULL    |       |
+| name  | varchar(20) | YES  |     | NULL    |       |
++-------+-------------+------+-----+---------+-------+
+3 rows in set (0.03 sec)
+
+mysql> insert into student
+    -> (email,id,name)
+    -> values('mittal@gmail.com',1,'Mittal');
+Query OK, 1 row affected (0.04 sec)
+
+mysql> select * from student;
++------------------+------+--------+
+| email            | id   | name   |
++------------------+------+--------+
+| mittal@gmail.com |    1 | Mittal |
++------------------+------+--------+
+1 row in set (0.01 sec)
+
+mysql> insert into student
+    -> (email,id,name)
+    ->  values('k@gamil.com',2,'kumkum'),
+    ->  ('m@gmail.com',3,'Mina');
+Query OK, 2 rows affected (0.02 sec)
+Records: 2  Duplicates: 0  Warnings: 0
+
+mysql>
+mysql> select * from student;
++------------------+------+--------+
+| email            | id   | name   |
++------------------+------+--------+
+| mittal@gmail.com |    1 | Mittal |
+| k@gamil.com      |    2 | kumkum |
+| m@gmail.com      |    3 | Mina   |
++------------------+------+--------+
+--------------------------------------------------------------------------
+  Multiple enteries:
+
+     mysql> insert into student
+    -> (email,id,name)
+    -> values('mittal@213',3,'ccc'),
+    -> ('priti@123',4,'ppp');
+Query OK, 2 rows affected (0.02 sec)
+Records: 2  Duplicates: 0  Warnings: 0
+
+mysql> select * from student;
++------------------+------+--------+
+| email            | id   | name   |
++------------------+------+--------+
+| mittal@gmail.com |    1 | Mittal |
+| k@gamil.com      |    2 | kumkum |
+| m@gmail.com      |    3 | Mina   |
+| mittal@213       |    3 | ccc    |
+| priti@123        |    4 | ppp    |
++------------------+------+--------+
+5 rows in set (0.00 sec)
+---------------------------------------------------------------------
+           2)update: to update or modify existing field in table using of update command.
+
+              syntax:
+                 
+                 UPDATE <tablename>
+                 SET 
+                 column = value,
+                 column = value
+                 where id = <dynamicvalue>;
+
+
+mysql> update student
+    -> set
+    -> name = "manasi",
+    -> email = 'manasi@gmail.com'
+    -> where
+    -> id = 1;
+Query OK, 1 row affected (0.03 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select * from student;
+-----------------------------------------------------------
+1)Primary Key:
+
+              which is represent current table identity which we can connect with
+              another table.
+
+    mysql> create table employee
+    -> (
+    -> id int primary key auto_increment,
+    -> name varchar(20),
+    -> salary int
+    -> );
+Query OK, 0 rows affected (0.12 sec)
+
+mysql> desc employee;
++--------+-------------+------+-----+---------+----------------+
+| Field  | Type        | Null | Key | Default | Extra          |
++--------+-------------+------+-----+---------+----------------+
+| id     | int         | NO   | PRI | NULL    | auto_increment |
+| name   | varchar(20) | YES  |     | NULL    |                |
+| salary | int         | YES  |     | NULL    |                |
++--------+-------------+------+-----+---------+----------------+
+3 rows in set (0.01 sec)
+
+mysql> insert into employee
+    -> (name,salary)
+    -> values('mittal',20000),
+    -> ('priti',30000);
+Query OK, 2 rows affected (0.02 sec)
+Records: 2  Duplicates: 0  Warnings: 0
+
+mysql> select * from employee;
++----+--------+--------+
+| id | name   | salary |
++----+--------+--------+
+|  1 | mittal |  20000 |
+|  2 | priti  |  30000 |
++----+--------+--------+
+2 rows in set (0.01 sec)
+
+UPDATE::
+   mysql> update employee
+    -> set
+    -> name ='manasi'
+    -> where id = 1;
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select * from employee;
++----+--------+--------+
+| id | name   | salary |
++----+--------+--------+
+|  1 | manasi |  20000 |
+|  2 | mittal |  30000 |
++----+--------+--------+
+2 rows in set (0.00 sec)
+----------------------------------------------------------------------
+
+Constaints:: A rule which is define kind and what kind of data we can store in table.
+
+
+    1) Primary key:
+                   one table can have only 1 primary key 
+                   rule of primary key it must be unique
+                   and not Null.
+
+                   1
+                   1    X
+
+                   1
+                       X
+                   3
+
+     2)unique :: which prevent Duplications 
+
+              syntax::
+
+                 fieldname datatype unique;
+
+
+                 mysql> alter table employee add email varchar(20) unique;
+Query OK, 0 rows affected (0.20 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc employee;
++--------+-------------+------+-----+---------+----------------+
+| Field  | Type        | Null | Key | Default | Extra          |
++--------+-------------+------+-----+---------+----------------+
+| id     | int         | NO   | PRI | NULL    | auto_increment |
+| name   | varchar(20) | YES  |     | NULL    |                |
+| salary | int         | YES  |     | NULL    |                |
+| email  | varchar(20) | YES  | UNI | NULL    |                |
++--------+-------------+------+-----+---------+----------------+
+4 rows in set (0.02 sec)
+
+mysql> update employee
+    -> set
+    -> email = 'mittal@1123'
+    -> where id = 1;
+Query OK, 1 row affected (0.00 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select * from employee;
++----+--------+--------+-------------+
+| id | name   | salary | email       |
++----+--------+--------+-------------+
+|  1 | manasi |  20000 | mittal@1123 |
+|  2 | mittal |  30000 | NULL        |
++----+--------+--------+-------------+
+2 rows in set (0.00 sec)
+
+mysql> update employee
+    -> set
+    -> email = 'mittal@1123'
+    -> where id = 2;'
+ERROR 1062 (23000): Duplicate entry 'mittal@1123' for key 'employee.email'
+----------------------------------------------------------------------------
+
+3)Not Null:: when we want specific field at insert time we can  assign not Null.
+
+
+    syntax: fieldname datatype not null;
+
+mysql> alter table employee modify name varchar(20) not null;
+
+
+Query OK, 0 rows affected (0.29 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> select *  from employee;
++----+--------+--------+-------------+
+| id | name   | salary | email       |
++----+--------+--------+-------------+
+|  1 | manasi |  20000 | mittal@1123 |
+|  2 | mittal |  30000 | NULL        |
++----+--------+--------+-------------+
+2 rows in set (0.00 sec)
+
+mysql> desc employee;
++--------+-------------+------+-----+---------+----------------+
+| Field  | Type        | Null | Key | Default | Extra          |
++--------+-------------+------+-----+---------+----------------+
+| id     | int         | NO   | PRI | NULL    | auto_increment |
+| name   | varchar(20) | NO   |     | NULL    |                |
+| salary | int         | YES  |     | NULL    |                |
+| email  | varchar(20) | YES  | UNI | NULL    |                |
++--------+-------------+------+-----+---------+----------------+
+4 rows in set (0.00 sec)
+
+mysql> insert into employee
+    -> (salary,email)
+    -> values
+    -> (10000,'m@gmail.com');
+ERROR 1364 (HY000): Field 'name' doesn't have a default value
+-----------------------------------------------------------------
+
+ 4)Default::
+            it will add automatic value Whenever we insert record with null.
+
+
+            status  = "PENDING"
+
+            mysql>alter table employee add status varchar(20) default "PENDING";
+
+            mysql> desc employee;
++--------+-------------+------+-----+---------+----------------+
+| Field  | Type        | Null | Key | Default | Extra          |
++--------+-------------+------+-----+---------+----------------+
+| id     | int         | NO   | PRI | NULL    | auto_increment |
+| name   | varchar(20) | NO   |     | NULL    |                |
+| salary | int         | YES  |     | NULL    |                |
+| email  | varchar(20) | YES  | UNI | NULL    |                |
+| status | varchar(20) | YES  |     | PENDING |                |
++--------+-------------+------+-----+---------+----------------+
+5 rows in set (0.03 sec)
+
+mysql> select * from employee;
++----+--------+--------+-------------+---------+
+| id | name   | salary | email       | status  |
++----+--------+--------+-------------+---------+
+|  1 | manasi |  20000 | mittal@1123 | PENDING |
+|  2 | mittal |  30000 | NULL        | PENDING |
++----+--------+--------+-------------+---------+
+2 rows in set (0.00 sec)
+-----------------------------------------------------------------------
+5) check::
+            this Constaints which is used to validate value condition wise.
+
+            create table employee
+            (
+               id int primary key auto_increment,
+               age int check (age>=18)
+            );
+
+            alter table employee add age int;
+
+            alter table employee add constraint age check (age>=18);
+
+ ----------------------------------------------------------------------
+
+ 6)Forign key::
+
+              which is mainly use to connect with another table.
+
+              when we want to provide relationship between two tables we have to 
+              use foregin key.
+
+              create table department
+              (
+                id int primary key auto_increment,
+                d_name varchar(20)
+              );
+
+              1 IT           
+              2 ADMIN
+
+              create table employee
+              (
+                id int primary key auto_increment,
+                name varchar(20),
+                d_id int,
+                foregin key (d_id) references department(id)
+
+              );
+ --------------------------------------------------------------------------------  
+
+ 3)DELETE::
+           when we want to remove specific row or records from the existing table
+           we  have to use DELETE command.
+
+           syntax::
+                  DELETE from <tablename> where columnname = value;
+
+ mysql> select * from employee;
++----+--------+--------+-------------+---------+------+
+| id | name   | salary | email       | status  | age  |
++----+--------+--------+-------------+---------+------+
+|  1 | manasi |  20000 | mittal@1123 | PENDING | NULL |
+|  2 | mittal |  30000 | NULL        | PENDING | NULL |
++----+--------+--------+-------------+---------+------+
+2 rows in set (0.06 sec)
+
+mysql> delete from employee where id = 2;
+Query OK, 1 row affected (0.02 sec)
+
+mysql> select * from employee;
++----+--------+--------+-------------+---------+------+
+| id | name   | salary | email       | status  | age  |
++----+--------+--------+-------------+---------+------+
+|  1 | manasi |  20000 | mittal@1123 | PENDING | NULL |
++----+--------+--------+-------------+---------+------+
+1 row in set (0.00 sec)
+--------------------------------------------------------------------------------
+
+3)DQL::
+       Data query language
+
+       most powerfull command in sql language
+
+       using of DQL we can retrive data from the database
+       with specific condition wise
+
+       i)select
+        
+          when we want to retrive all data from the table
+
+          syntax: 
+
+          select * from <tablename>;
+======================================================================
+
+ when we want to display specific field
+
+ syntax:
+
+     select column1,column2....<tablename>;
+
+     mysql> select * from employee;
++----+--------+--------+-------------+---------+------+
+| id | name   | salary | email       | status  | age  |
++----+--------+--------+-------------+---------+------+
+|  1 | manasi |  20000 | mittal@1123 | PENDING | NULL |
++----+--------+--------+-------------+---------+------+
+1 row in set (0.00 sec)
+
+mysql> select name from employee;
++--------+
+| name   |
++--------+
+| manasi |
++--------+
+1 row in set (0.08 sec)
+=====================================================================
+
+==> alter table employee add department varchar(20);
+==>mysql> update employee
+    -> set department = "IT"
+    -> where id = 1;    
+==> fatch distinct record from the table
+
+mysql> select distinct department from employee;
++------------+
+| department |
++------------+
+| IT         |
+| HR         |
++------------+
+2 rows in set (0.02 sec)
+----------------------------------------------------------------------------
+  ===>Operator::
+
+      =:comaprision equality
+      >:
+      <:
+      >=:
+      <=:
+      !=:
+
+      mysql> select * from employee where salary >20000;
++----+--------+--------+------------------+---------+------+------------+
+| id | name   | salary | email            | status  | age  | department |
++----+--------+--------+------------------+---------+------+------------+
+|  3 | Mittal |  30000 | mittal@gmail.com | PENDING |   20 | HR         |
+|  4 | MiNA   | 300000 | m@gmail.com      | PENDING |   22 | IT         |
++----+--------+--------+------------------+---------+------+------------+
+2 rows in set (0.01 sec)
+
+
+mysql> select * from employee where department != "IT";
++----+--------+--------+------------------+---------+------+------------+
+| id | name   | salary | email            | status  | age  | department |
++----+--------+--------+------------------+---------+------+------------+
+|  3 | Mittal |  30000 | mittal@gmail.com | PENDING |   20 | HR         |
++----+--------+--------+------------------+---------+------+------------+
+1 row in set (0.02 sec)
+--------------------------------------------------------------------------
+
+mysql> update employee set age=23 where id = 1;
+Query OK, 1 row affected (0.03 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select * from employee;
++----+--------+--------+------------------+---------+------+------------+
+| id | name   | salary | email            | status  | age  | department |
++----+--------+--------+------------------+---------+------+------------+
+|  1 | manasi |  20000 | mittal@1123      | PENDING |   23 | IT         |
+|  3 | Mittal |  30000 | mittal@gmail.com | PENDING |   20 | HR         |
+|  4 | MiNA   | 300000 | m@gmail.com      | PENDING |   22 | IT         |
++----+--------+--------+------------------+---------+------+------------+
+3 rows in set (0.00 sec)
+----------------------------------------------------------------------------------
+LOGICAL OPERATOR::
+
+  AND: check both the condition and make sure both are true.
+
+   mysql> select * from employee where name = "manasi" and age>=20;
++----+--------+--------+-------------+---------+------+------------+
+| id | name   | salary | email       | status  | age  | department |
++----+--------+--------+-------------+---------+------+------------+
+|  1 | manasi |  20000 | mittal@1123 | PENDING |   23 | IT         |
++----+--------+--------+-------------+---------+------+------------+
+1 row in set (0.00 sec)
+----------------------------------------------------------------------------------
+  OR:Need one or more condition true
+
+mysql>  select * from employee where department ="IT" or department = "Admin";
++----+--------+--------+-------------+---------+------+------------+
+| id | name   | salary | email       | status  | age  | department |
++----+--------+--------+-------------+---------+------+------------+
+|  1 | manasi |  20000 | mittal@1123 | PENDING |   23 | IT         |
+|  4 | MiNA   | 300000 | m@gmail.com | PENDING |   22 | IT         |
++----+--------+--------+-------------+---------+------+------------+
+2 rows in set (0.00 sec)
+------------------------------------------------------------------------------------
+  NOT:except this
+
+mysql> select * from employee where not department="HR";
++----+--------+--------+-------------+---------+------+------------+
+| id | name   | salary | email       | status  | age  | department |
++----+--------+--------+-------------+---------+------+------------+
+|  1 | manasi |  20000 | mittal@1123 | PENDING |   23 | IT         |
+|  4 | MiNA   | 300000 | m@gmail.com | PENDING |   22 | IT         |
++----+--------+--------+-------------+---------+------+------------+
+2 rows in set (0.00 sec)
+------------------------------------------------------------------------------------
+  IN: membership consider
+
+  mysql>  select * from employee where name in("manasi","Mittal");
++----+--------+--------+------------------+---------+------+------------+
+| id | name   | salary | email            | status  | age  | department |
++----+--------+--------+------------------+---------+------+------------+
+|  1 | manasi |  20000 | mittal@1123      | PENDING |   23 | IT         |
+|  3 | Mittal |  30000 | mittal@gmail.com | PENDING |   20 | HR         |
++----+--------+--------+------------------+---------+------+------------+
+2 rows in set (0.00 sec)
+---------------------------------------------------------------------------
+NOT IN:
+
+      mysql> select * from employee where name not in("manasi","Mittal");
++----+------+--------+-------------+---------+------+------------+
+| id | name | salary | email       | status  | age  | department |
++----+------+--------+-------------+---------+------+------------+
+|  4 | MiNA | 300000 | m@gmail.com | PENDING |   22 | IT         |
++----+------+--------+-------------+---------+------+------------+
+1 row in set (0.01 sec)
+--------------------------------------------------------------------------
+
+BETWEEN:
+
+  mysql> select * from employee where salary between 20000 and 30000;
++----+--------+--------+------------------+---------+------+------------+
+| id | name   | salary | email            | status  | age  | department |
++----+--------+--------+------------------+---------+------+------------+
+|  1 | manasi |  20000 | mittal@1123      | PENDING |   23 | IT         |
+|  3 | Mittal |  30000 | mittal@gmail.com | PENDING |   20 | HR         |
++----+--------+--------+------------------+---------+------+------------+
+2 rows in set (0.02 sec)
+-------------------------------------------------------------------------
+ORDER BY:
+    when we want to retrive records by ASC order or DES.
+
+    by  default order by asc by ID field.
+
+    mysql> select * from employee order by salary;
++----+--------+--------+------------------+---------+------+------------+
+| id | name   | salary | email            | status  | age  | department |
++----+--------+--------+------------------+---------+------+------------+
+|  1 | manasi |  20000 | mittal@1123      | PENDING |   23 | IT         |
+|  3 | Mittal |  30000 | mittal@gmail.com | PENDING |   20 | HR         |
+|  4 | MiNA   | 300000 | m@gmail.com      | PENDING |   22 | IT         |
++----+--------+--------+------------------+---------+------+------------+
+3 rows in set (0.00 sec)
+-----------------------------------------------------------------------------
+mysql> select name as username,salary as income from employee;
++----------+--------+
+| username | income |
++----------+--------+
+| manasi   |  20000 |
+| Mittal   |  30000 |
+| MiNA     | 300000 |
++----------+--------+
+------------------------------------------------------------------------------
+mysql> select name,salary,department from employee  order by salary desc;
++--------+--------+------------+
+| name   | salary | department |
++--------+--------+------------+
+| MiNA   | 300000 | IT         |
+| Mittal |  30000 | HR         |
+| manasi |  20000 | IT         |
++--------+--------+------------+
+3 rows in set (0.00 sec)
+------------------------------------------------------------------------------
+mysql>  select name,salary,department from employee  order by salary asc;
++--------+--------+------------+
+| name   | salary | department |
++--------+--------+------------+
+| manasi |  20000 | IT         |
+| Mittal |  30000 | HR         |
+| MiNA   | 300000 | IT         |
++--------+--------+------------+
+3 rows in set (0.01 sec)
+----------------------------------------------------------------------------
+
+mysql>   select name,salary,department from employee
+    -> where department = "IT"
+    -> order by salary desc;
++--------+--------+------------+
+| name   | salary | department |
++--------+--------+------------+
+| MiNA   | 300000 | IT         |
+| manasi |  20000 | IT         |
++--------+--------+------------+
+-------------------------------------------------------------------------------
+limit: we can set limit how many records we want using select query.
+
+mysql> select * from employee limit 2;
++----+--------+--------+------------------+---------+------+------------+
+| id | name   | salary | email            | status  | age  | department |
++----+--------+--------+------------------+---------+------+------------+
+|  1 | manasi |  20000 | mittal@1123      | PENDING |   23 | IT         |
+|  3 | Mittal |  30000 | mittal@gmail.com | PENDING |   20 | HR         |
++----+--------+--------+------------------+---------+------+------------+
+2 rows in set (0.00 sec)
+
+mysql> select name,department,salary from employee
+    -> where salary >15000
+    -> order by salary desc
+    -> limit 1;
++------+------------+--------+
+| name | department | salary |
++------+------------+--------+
+| MiNA | IT         | 300000 |
++------+------------+--------+
+1 row in set (0.00 sec)
+----------------------------------------------------------------------------------
+LIKE::
+    mysql> select * from employee where name like 'M%';
++----+--------+--------+------------------+---------+------+------------+
+| id | name   | salary | email            | status  | age  | department |
++----+--------+--------+------------------+---------+------+------------+
+|  1 | manasi |  20000 | mittal@1123      | PENDING |   23 | IT         |
+|  3 | Mittal |  30000 | mittal@gmail.com | PENDING |   20 | HR         |
+|  4 | MiNA   | 300000 | m@gmail.com      | PENDING |   22 | IT         |
++----+--------+--------+------------------+---------+------+------------+
+3 rows in set (0.01 sec)
+
+mysql>  select * from employee where name like '%s%';
++----+--------+--------+-------------+---------+------+------------+
+| id | name   | salary | email       | status  | age  | department |
++----+--------+--------+-------------+---------+------+------------+
+|  1 | manasi |  20000 | mittal@1123 | PENDING |   23 | IT         |
++----+--------+--------+-------------+---------+------+------------+
+1 row in set (0.00 sec)
+--------------------------------------------------------------------------------
+page 0----- 0-10
+page 1-----11-20
+
+mysql> select name from employee
+    -> limit 2
+    -> offset 0;
++--------+
+| name   |
++--------+
+| manasi |
+| Mittal |
++--------+
+2 rows in set (0.00 sec)
+
+mysql> select name from employee
+    ->  limit 2
+    -> offset 1;
++--------+
+| name   |
++--------+
+| Mittal |
+| MiNA   |
++--------+
+2 rows in set (0.00 sec)
+------------------------------------------------------------------------
+
+AGGREGATE FUNCTIONS:
+
+SUM()
+mysql> select sum(salary) from employee;
++-------------+
+| sum(salary) |
++-------------+
+|      350000 |
++-------------+
+1 row in set (0.00 sec)
+
+mysql> select sum(salary) as TOTAL_SALARY from employee;
++--------------+
+| TOTAL_SALARY |
++--------------+
+|       350000 |
++--------------+
+COUNT()
+mysql> Select count(*) from employee;
++----------+
+| count(*) |
++----------+
+|        3 |
++----------+
+MIN()
+mysql> select min(salary) as LOWEST_SALARY from employee;
++---------------+
+| LOWEST_SALARY |
++---------------+
+|         20000 |
++---------------+
+MAX()
+mysql> select max(salary) as HIGHEST_SALARY from employee;
++----------------+
+| HIGHEST_SALARY |
++----------------+
+|         300000 |
++----------------+
+AVG()
+mysql> select avg(salary) as AVG from employee;
++-------------+
+| AVG         |
++-------------+
+| 116666.6667 |
++-------------+
+-----------------------------------------------------------------------------
+GROUP BY:
+
+mysql> create table amz_order
+    -> (
+    -> id int primary key auto_increment,
+    -> customer_name varchar(20),
+    -> city_name varchar(20),
+    -> status varchar(20) default "success"
+    -> );
+
+    mysql> desc amz_order;
++---------------+-------------+------+-----+---------+----------------+
+| Field         | Type        | Null | Key | Default | Extra          |
++---------------+-------------+------+-----+---------+----------------+
+| id            | int         | NO   | PRI | NULL    | auto_increment |
+| customer_name | varchar(20) | YES  |     | NULL    |                |
+| city_name     | varchar(20) | YES  |     | NULL    |                |
+| status        | varchar(20) | YES  |     | success |                |
++---------------+-------------+------+-----+---------+----------------+
+----------------------------------------------------------------------------
+mysql> insert into amz_order
+    -> (customer_name,city_name,status)
+    -> values
+    -> ("Siya","ahemdabad","success"),
+    ->  ("jiya","ahemdabad","success"),
+    ->  ("Diya","mumbai","failed"),
+    ->  ("piya","ahemdabad","failed"),
+    ->  ("riya","rajkot","success");
+
+    mysql> select * from amz_order;
++----+---------------+-----------+---------+
+| id | customer_name | city_name | status  |
++----+---------------+-----------+---------+
+|  1 | Siya          | ahemdabad | success |
+|  2 | jiya          | ahemdabad | success |
+|  3 | Diya          | mumbai    | failed  |
+|  4 | piya          | ahemdabad | failed  |
+|  5 | riya          | rajkot    | success |
++----+---------------+-----------+---------+
+---------------------------------------------------------------------------
+mysql> select city_name as city,count(city_name) as total
+    -> from amz_order
+    ->  group by city_name;
++-----------+-------+
+| city      | total |
++-----------+-------+
+| ahemdabad |     3 |
+| mumbai    |     1 |
+| rajkot    |     1 |
++-----------+-------+
+---------------------------------------------------------------------------
+mysql>  select city_name,status,count(city_name)
+    -> from amz_order
+    -> where status = "success"
+    -> group by city_name;
++-----------+---------+------------------+
+| city_name | status  | count(city_name) |
++-----------+---------+------------------+
+| ahemdabad | success |                2 |
+| rajkot    | success |                1 |
++-----------+---------+------------------+
+-------------------------------------------------------------------------
+
+mysql> select city_name,count(city_name) from amz_order
+    -> group by city_name;
++-----------+------------------+
+| city_name | count(city_name) |
++-----------+------------------+
+| ahemdabad |                3 |
+| mumbai    |                1 |
+| rajkot    |                1 |
++-----------+------------------+
+
+HAVING::
+      using of HAVING clause we can apply condition on group.
+
+      difference between where clause and HAVING clause:
+
+      where:apply on each row
+
+      HAVING:apply on each group
+
+      
+mysql> select city_name,count(city_name) as total_customer
+    -> from amz_order
+    -> group by city_name
+    -> having count(*)>=2;
++-----------+----------------+
+| city_name | total_customer |
++-----------+----------------+
+| ahemdabad |              3 |
++-----------+----------------+
+
+-------------------------------------------------------------------
+GROUP BY + sum:
+
+mysql> select department,sum(salary) from employee
+    ->  group by department;
++------------+-------------+
+| department | sum(salary) |
++------------+-------------+
+| IT         |      320000 |
+| HR         |       30000 |
++------------+-------------+
+2 rows in set (0.02 sec)
+======================================================================
+JOIN::
+
+1)tbl_customer :
+   
+    mysql> create table tbl_customer
+    -> (
+    -> id int primary key auto_increment,
+    ->  c_name varchar(20),
+    ->  city varchar(20)
+    -> );
+Query OK, 0 rows affected (0.17 sec)
+
+mysql> insert into tbl_customer
+    -> (c_name,city)
+    -> values
+    -> ("Piya","Ahemdabad"),
+    ->  ("Riya","Ahemdabad"),
+    ->  ("Diya","Baroda"),
+    ->  ("Jiya","Mumbai");
+Query OK, 4 rows affected (0.04 sec)
+Records: 4  Duplicates: 0  Warnings: 0
+
+mysql> select * from tbl_customer;
++----+--------+-----------+
+| id | c_name | city      |
++----+--------+-----------+
+|  1 | Piya   | Ahemdabad |
+|  2 | Riya   | Ahemdabad |
+|  3 | Diya   | Baroda    |
+|  4 | Jiya   | Mumbai    |
++----+--------+-----------+
+
+2)tbl_order:
+ 
+  
+  create table tbl_order
+     (
+     id int primary key auto_increment,
+      cust_id int,
+     product_name varchar(20),
+     product_amt decimal(10,2)
+      );
+
+
+      mysql> insert into tbl_order
+    -> (cust_id, product_name,product_amt)
+    -> values
+    -> (1,"TV",26000),
+    -> (2,"MOBAIL",30000),
+    -> (1,"LAPTOP",40000),
+    -> (3,"COMPUTER",50000);
+Query OK, 4 rows affected (0.01 sec)
+Records: 4  Duplicates: 0  Warnings: 0
+
+mysql> select * from tbl_order;
++----+---------+--------------+-------------+
+| id | cust_id | product_name | product_amt |
++----+---------+--------------+-------------+
+|  1 |       1 | TV           |    26000.00 |
+|  2 |       2 | MOBAIL       |    30000.00 |
+|  3 |       1 | LAPTOP       |    40000.00 |
+|  4 |       3 | COMPUTER     |    50000.00 |
++----+---------+--------------+-------------+
+
+--------------------------------------------------
+c_name product_name product_amt
+-------------------------------------------------
+
+mysql> select c_name,product_name,product_amt
+    -> from tbl_customer
+    -> inner join tbl_order
+    -> on tbl_customer.id = tbl_order.cust_id;
++--------+--------------+-------------+
+| c_name | product_name | product_amt |
++--------+--------------+-------------+
+| Piya   | TV           |    26000.00 |
+| Riya   | MOBAIL       |    30000.00 |
+| Piya   | LAPTOP       |    40000.00 |
+| Diya   | COMPUTER     |    50000.00 |
++--------+--------------+-------------+
+--------------------------------------------------------------------------
+
+Inner join:
+
+       to combine both or more tables with matching condition.
+
+left join:
+
+       merge left table with right table but based on left table condition
+
+       L          R
+       -------------
+       1          1
+       2          1
+       3          4
+       4
+
+Expected result::
+
+    1
+    2
+    3
+    4  Null
+
+
+    mysql> select c_name,city,product_name,product_amt
+    -> from tbl_customer
+    -> left join tbl_order
+    -> on tbl_customer.id=tbl_order.id;
+
+    +--------+-----------+--------------+-------------+
+| c_name | city      | product_name | product_amt |
++--------+-----------+--------------+-------------+
+| Piya   | Ahemdabad | TV           |    26000.00 |
+| Riya   | Ahemdabad | MOBAIL       |    30000.00 |
+| Diya   | Baroda    | LAPTOP       |    40000.00 |
+| Jiya   | Mumbai    | COMPUTER     |    50000.00 |
+| Nena   | Idar      | NULL         |        NULL |
++--------+-----------+--------------+-------------+
+ ----------------------------------------------------------------------------------
+Right join::
+
+mysql>  select c_name,city,product_name,product_amt
+    -> from tbl_customer
+    -> right join tbl_order
+    ->  on tbl_customer.id=tbl_order.id;
++--------+-----------+--------------+-------------+
+| c_name | city      | product_name | product_amt |
++--------+-----------+--------------+-------------+
+| Piya   | Ahemdabad | TV           |    26000.00 |
+| Riya   | Ahemdabad | MOBAIL       |    30000.00 |
+| Diya   | Baroda    | LAPTOP       |    40000.00 |
+| Jiya   | Mumbai    | COMPUTER     |    50000.00 |
++--------+-----------+--------------+-------------+
+
+--------------------------------------------------------------------------
+
+Full outer join::
+
+merge both table records but in mysql Full outer join is not supported.
+
+but using of union we can achieve result of full outer join.
+
+select * from tbl_customer
+left join tbl_order
+on tbl_customer.id=tbl_order.id;
+
+----+--------+-----------+------+---------+--------------+-------------+
+| id | c_name | city      | id   | cust_id | product_name | product_amt |
++----+--------+-----------+------+---------+--------------+-------------+
+|  1 | Piya   | Ahemdabad |    1 |       1 | TV           |    26000.00 |
+|  2 | Riya   | Ahemdabad |    2 |       2 | MOBAIL       |    30000.00 |
+|  3 | Diya   | Baroda    |    3 |       1 | LAPTOP       |    40000.00 |
+|  4 | Jiya   | Mumbai    |    4 |       3 | COMPUTER     |    50000.00 |
+|  5 | Nena   | Idar      | NULL |    NULL | NULL         |        NULL |
++----+--------+-----------+------+---------+--------------+-------------+
+----------------------------------------------------------------------------
+select * from tbl_customer
+Right join tbl_order
+on tbl_customer.id=tbl_order.id;
+
++------+--------+-----------+----+---------+--------------+-------------+
+| id   | c_name | city      | id | cust_id | product_name | product_amt |
++------+--------+-----------+----+---------+--------------+-------------+
+|    1 | Piya   | Ahemdabad |  1 |       1 | TV           |    26000.00 |
+|    2 | Riya   | Ahemdabad |  2 |       2 | MOBAIL       |    30000.00 |
+|    3 | Diya   | Baroda    |  3 |       1 | LAPTOP       |    40000.00 |
+|    4 | Jiya   | Mumbai    |  4 |       3 | COMPUTER     |    50000.00 |
++------+--------+-----------+----+---------+--------------+-------------+
+
+---------------------------------------------------------------------------
+
+Full outer join
+
+mysql> select * from tbl_customer
+    -> left join tbl_order
+    -> on tbl_customer.id=tbl_order.id
+    -> UNION
+    -> select * from tbl_customer
+    -> Right join tbl_order
+    -> on tbl_customer.id=tbl_order.id;
++------+--------+-----------+------+---------+--------------+-------------+
+| id   | c_name | city      | id   | cust_id | product_name | product_amt |
++------+--------+-----------+------+---------+--------------+-------------+
+|    1 | Piya   | Ahemdabad |    1 |       1 | TV           |    26000.00 |
+|    2 | Riya   | Ahemdabad |    2 |       2 | MOBAIL       |    30000.00 |
+|    3 | Diya   | Baroda    |    3 |       1 | LAPTOP       |    40000.00 |
+|    4 | Jiya   | Mumbai    |    4 |       3 | COMPUTER     |    50000.00 |
+|    5 | Nena   | Idar      | NULL |    NULL | NULL         |        NULL |
++------+--------+-----------+------+---------+--------------+-------------+
+
+--------------------------------------------------------------------
+
+union combine
+
+mysql> create table B
+    ->  (name varchar(20));
+Query OK, 0 rows affected (0.04 sec)
+
+mysql> insert into A
+    -> values
+    -> ('AAA'),
+    -> ('AAA'),
+    -> ('BBB');
+Query OK, 3 rows affected (0.01 sec)
+Records: 3  Duplicates: 0  Warnings: 0
+
+mysql>  insert into B
+    -> values
+    -> ('CCC'),
+    -> ('DDD');
+Query OK, 2 rows affected (0.01 sec)
+Records: 2  Duplicates: 0  Warnings: 0
+
+mysql> select * from A
+    -> Union
+    -> select * from B;
++------+
+| name |
++------+
+| AAA  |
+| BBB  |
+| CCC  |
+| DDD  |
++------+
+4 rows in set (0.02 sec)
+
+mysql> select * from A
+    -> Union All
+    ->  select * from B;
++------+
+| name |
++------+
+| AAA  |
+| AAA  |
+| BBB  |
+| CCC  |
+| DDD  |
++------+
+5 rows in set (0.00 sec)
+---------------------------------------------------------------------------
+Self join::
+
+        when we want to join same table with same id
+
+        e.g.
+
+        employee
+
+        ID        emp_name     manager_id
+        1           Aarav       Null
+        2           Riya         1
+        3           kiya         2
+        4           Diya         2
+
+mysql> create table tbl_emp
+    -> ( id int primary key auto_increment,
+    -> employee_name varchar(20),
+    -> manager_id int
+    -> );
+Query OK, 0 rows affected (0.11 sec)
+
+mysql> insert into tbl_emp
+    -> (employee_name,manager_id)
+    -> values
+    -> ("Aarav",NULL),
+    -> ("Riya",1),
+    ->  ("Kiya",1),
+    ->  ("Diya",2);
+Query OK, 4 rows affected (0.01 sec)
+Records: 4  Duplicates: 0  Warnings: 0
+
+mysql> select * from tbl_emp;
++----+---------------+------------+
+| id | employee_name | manager_id |
++----+---------------+------------+
+|  1 | Aarav         |       NULL |
+|  2 | Riya          |          1 |
+|  3 | Kiya          |          1 |
+|  4 | Diya          |          2 |
++----+---------------+------------+
+4 rows in set (0.01 sec)
+
+mysql> select e.employee_name as employee_name,
+    -> m.employee_name as manager_name
+    -> from tbl_emp as e
+    -> join tbl_emp as m
+    -> on e.manager_id = m.id;
++---------------+--------------+
+| employee_name | manager_name |
++---------------+--------------+
+| Riya          | Aarav        |
+| Kiya          | Aarav        |
+| Diya          | Riya         |
++---------------+--------------+
+3 rows in set (0.01 sec)
+-----------------------------------------------------------------------
+
+4)TCL::
+      Transcation command language
+
+      which is similar like undo process
+
+      1)commit:
+               to save Transcation permenantly
+
+      2)Rollback:
+                to move back to last command it only support before commit.
+                it is similar like undo
+
+      3)savepoint:
+                it is like checkpoint we can save specific command Transcation 
+                in memory.
+
+---------------------------------------------------------------------------------
+
+     mysql> create table account
+    -> (id int primary key auto_increment,
+    -> name varchar(20),
+    -> amt int
+    -> );
+Query OK, 0 rows affected (0.03 sec)
+
+mysql> insert into account
+    -> (name,amt)
+    -> values
+    -> ("Riya",5000),
+    -> ("Diya",8000),
+    -> ("Piya",6000);
+Query OK, 3 rows affected (0.01 sec)
+Records: 3  Duplicates: 0  Warnings: 0
+
+mysql> select * from account;
++----+------+------+
+| id | name | amt  |
++----+------+------+
+|  1 | Riya | 5000 |
+|  2 | Diya | 8000 |
+|  3 | Piya | 6000 |
++----+------+------+
+3 rows in set (0.00 sec)
+
+mysql> start transaction;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> update account
+    -> set amt=2000
+    -> where id=1;
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select * from account;
++----+------+------+
+| id | name | amt  |
++----+------+------+
+|  1 | Riya | 2000 |
+|  2 | Diya | 8000 |
+|  3 | Piya | 6000 |
++----+------+------+
+3 rows in set (0.00 sec)
+
+mysql> rollback;
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> select * from account;
++----+------+------+
+| id | name | amt  |
++----+------+------+
+|  1 | Riya | 5000 |
+|  2 | Diya | 8000 |
+|  3 | Piya | 6000 |
++----+------+------+
+3 rows in set (0.00 sec) 
+-------------------------------------------------------------------------        
+
+mysql> update account
+    -> set amt=1000 where id=2;
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select * from account;
++----+------+------+
+| id | name | amt  |
++----+------+------+
+|  1 | Riya | 5000 |
+|  2 | Diya | 1000 |
+|  3 | Piya | 6000 |
++----+------+------+
+3 rows in set (0.00 sec)
+
+mysql> commit;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> rollback;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> select * from account;
++----+------+------+
+| id | name | amt  |
++----+------+------+
+|  1 | Riya | 5000 |
+|  2 | Diya | 1000 |
+|  3 | Piya | 6000 |
++----+------+------+
+3 rows in set (0.00 sec)
+-----------------------------------------------------------------------
+
+mysql>  start transaction;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> savepoint s1;
+Query OK, 0 rows affected (0.01 sec)
+
+mysql>  rollback to s1;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> select * from account;
++----+------+-------+
+| id | name | amt   |
++----+------+-------+
+|  1 | Riya |  5000 |
+|  2 | Diya |  1000 |
+|  3 | Piya |  6000 |
+|  4 | jiya |  7000 |
+|  5 | piya | 15000 |
++----+------+-------+
+-------------------------------------------------------------
+
+5)DCL:
+      Data control language
+      using of DCL command we can provide control to specific
+      user and  we can restrict user to perform specific operation.
+
+
+      there are two statements in DCL
+
+      i)GRANT:: to give permission to specific user
+      ii)REVOKE:: to REVOKE back permission from user
+
+---------------------------------------------------------------------
+
+      create user:
+
+      create user 'username'@'localhost'
+      identified by 'password';
+
+mysql> create user 'mittal'@'localhost' identified by '12345';
+
+mysql> select user,host from mysql.user;
++------------------+-----------+
+| user             | host      |
++------------------+-----------+
+| mittal           | localhost |
+| mysql.infoschema | localhost |
+| mysql.session    | localhost |
+| mysql.sys        | localhost |
+| root             | localhost |
++------------------+-----------+
+5 rows in set (0.02 sec)
+
+mysql>  create user 'riya'@'localhost' identified by '123456';
+Query OK, 0 rows affected (0.03 sec)
+
+mysql>  select user,host from mysql.user;
++------------------+-----------+
+| user             | host      |
++------------------+-----------+
+| mittal           | localhost |
+| mysql.infoschema | localhost |
+| mysql.session    | localhost |
+| mysql.sys        | localhost |
+| riya             | localhost |
+| root             | localhost |
++------------------+-----------+
+6 rows in set (0.00 sec)
+
+mysql> drop user 'riya'@'localhost';
+------------------------------------------------------------------------------
+
+i)GRANT::
+
+mysql> create database tops;
+Query OK, 1 row affected (0.04 sec)
+
+mysql> use tops;
+Database changed
+mysql> create table student
+    -> (id int primary key auto_increment,
+    -> name varchar(20)
+    -> );
+Query OK, 0 rows affected (0.11 sec)
+
+mysql> insert into student (name) values ('Mittal');
+
+root:: mysql> Grant select
+    -> on tops.*
+    -> to 'mittal'@'localhost';
+
+    mysql> exit;
+    Bye
+
+mittal::
+   
+    C:\Users\rabar>mysql -u mittal -p
+
+mysql> use tops;
+Database changed
+mysql> select * from student;
++----+--------+
+| id | name   |
++----+--------+
+|  1 | Mittal |
++----+--------+   
+---------------------------------------------------------------------------------
+ii)REVOKE::
+
+
+mysql> revoke select
+    -> on tops.*
+    -> from 'mittal'@'localhost';
+Query OK, 0 rows affected (0.03 sec)
+
+mysql> exit;
+Bye
+
+C:\Users\rabar>mysql -u mittal -p
+Enter password: *****
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 13
+Server version: 8.0.46 MySQL Community Server - GPL
+
+Copyright (c) 2000, 2026, Oracle and/or its affiliates.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> use tops;
+ERROR 1044 (42000): Access denied for user 'mittal'@'localhost' to database 'tops'
+============================================================================
+
+Nested Query or subqueries::
+
+  e.g. fatch highest marks from the student table
+     retrive student detailes who get highest marks
+
+1)mysql> select max(salary) from employee;
+
++-------------+
+| max(salary) |
++-------------+
+|      300000 |
++-------------+
+
+2)mysql> select * from employee where salary = 300000;
++----+------+--------+-------------+---------+------+------------+
+| id | name | salary | email       | status  | age  | department |
++----+------+--------+-------------+---------+------+------------+
+|  4 | MiNA | 300000 | m@gmail.com | PENDING |   22 | IT         |
++----+------+--------+-------------+---------+------+------------+
+
+OR Nested Query::
+
+mysql> select * from employee where salary =
+    -> (select max(salary) from employee);
++----+------+--------+-------------+---------+------+------------+
+| id | name | salary | email       | status  | age  | department |
++----+------+--------+-------------+---------+------+------------+
+|  4 | MiNA | 300000 | m@gmail.com | PENDING |   22 | IT         |
++----+------+--------+-------------+---------+------+------------+
